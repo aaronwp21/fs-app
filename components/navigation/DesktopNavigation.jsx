@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 import {
   AppBar,
   Box,
@@ -8,12 +8,12 @@ import {
   Toolbar,
   Typography,
   Button,
-} from "@/components/mui";
-import { useTheme } from "@mui/material/styles";
+} from '@/components/mui';
+import { useTheme } from '@mui/material/styles';
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
-    console.log("no handleDrawerToggle function provided"),
+    console.log('no handleDrawerToggle function provided'),
 }) {
   const theme = useTheme();
   // console.log(theme);
@@ -27,7 +27,7 @@ function DesktopNavigation({
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -37,14 +37,21 @@ function DesktopNavigation({
             href={`/`}
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-              textDecoration: "none",
+              display: { xs: 'none', sm: 'block' },
+              textDecoration: 'none',
               color: lightTextColor,
             }}
           >
             Design Shop
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Button
+              sx={{ color: lightTextColor }}
+              component={Link}
+              href="/blog"
+            >
+              Blog
+            </Button>
             <Button
               sx={{ color: lightTextColor }}
               component={Link}
