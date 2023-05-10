@@ -1,10 +1,17 @@
 import Head from 'next/head';
 // import Image from 'next/image'
+
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { fetchProducts } from '@/lib/api-functions/server/products/queries';
+import { STORAGE_KEY } from '@/lib/tq/products/settings';
+
+import { log } from '@/lib/utils/formatters';
+
 import { Inter } from 'next/font/google';
-import { Button, EditIcon } from '@/components/mui';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
-import Paragraph from '@/components/Paragraph';
+import QueryBoundaries from '@/components/QueryBoundaries';
+import ProductList from '@/components/ProductList';
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -18,13 +25,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component='h2'>Home page</Heading>
-        <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis totam sit consectetur nobis quo vero a labore dolorem quia esse reprehenderit asperiores, sunt, excepturi vitae, alias necessitatibus quisquam voluptate amet!</Paragraph>
-        <Button variant="contained">
-          <EditIcon />
-          Button
-        </Button>
+        <Heading component="h2">Home page</Heading>
+        <QueryBoundaries>
+          <ProductList />
+        </QueryBoundaries>
       </Layout>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const products = await fetchProducts().catch((err) => console.log(err));
+  const queryClient = new QueryClient();
+
+  await queryClient.setQueryData(
+    console.log(products)
+    [STORAGE_KEY],
+    JSON.parse(JSON.stringify(products)),
+  );
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 }
