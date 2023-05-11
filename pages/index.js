@@ -25,7 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Home page</Heading>
+        <Heading component="h2">Products</Heading>
         <QueryBoundaries>
           <ProductList />
         </QueryBoundaries>
@@ -39,7 +39,6 @@ export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   await queryClient.setQueryData(
-    console.log(products)
     [STORAGE_KEY],
     JSON.parse(JSON.stringify(products)),
   );

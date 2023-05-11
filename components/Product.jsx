@@ -51,9 +51,10 @@ const ProductDisplay = ({
           <Typography component="dt" sx={{ textAlign: "right" }}>
             Price
           </Typography>
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
+          {/* <Typography component="dd" sx={{ fontWeight: "bold" }}>
             {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))}
-          </Typography>
+          </Typography> */}
+          {`£${price}`}
           <Typography component="dt" sx={{ textAlign: "right" }}>
             Quantity
           </Typography>

@@ -1,4 +1,3 @@
-// import { inspect } from "node:util";
 import Head from "next/head";
 import { slugify } from "@/lib/utils/formatters";
 import {

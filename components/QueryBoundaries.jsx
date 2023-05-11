@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { ErrorBoundary } from "react-error-boundary";
-import { Alert, Button, CircularProgress } from '@/components/mui';
+import { Alert, Button, CircularProgress } from "@/components/mui";
 import Paragraph from "@/components/Paragraph";
 
-const LoadingView = () => <CircularProgress />;
+export const LoadingView = () => <CircularProgress />;
 
-const ErrorView = ({ error, resetErrorBoundary }) => {
+export const ErrorView = ({ error, resetErrorBoundary }) => {
   return (
     <Alert severity="error">
       <Paragraph>{error.message}</Paragraph>
@@ -17,7 +17,7 @@ const ErrorView = ({ error, resetErrorBoundary }) => {
   );
 };
 
-export const QueryBoundaries = ({ children }) => {
+const QueryBoundaries = ({ children }) => {
   const { reset } = useQueryErrorResetBoundary();
   return (
     <ErrorBoundary
@@ -29,3 +29,5 @@ export const QueryBoundaries = ({ children }) => {
     </ErrorBoundary>
   );
 };
+
+export default QueryBoundaries;

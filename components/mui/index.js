@@ -18,6 +18,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export {
   Button,
@@ -39,5 +40,6 @@ export {
   CardMedia,
   CardContent,
   CardActions,
-  TextField
+  TextField,
+  CircularProgress
 };
