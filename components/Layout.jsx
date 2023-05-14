@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import Header from '@/components/Header';
 import Paragraph from '@/components/Paragraph';
 import {
@@ -19,25 +19,6 @@ function Layout({ children }) {
     hideDuration,
   } = useContext(UIContext);
 
-  const action = useCallback(
-    (props) => {
-      console.log(props);
-      return (
-        <>
-          <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={handleClose}
-          >
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        </>
-      );
-    },
-    [handleClose],
-  );
-
   return (
     <>
       <header>
@@ -53,7 +34,14 @@ function Layout({ children }) {
       >
         <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
           <Paragraph sx={{margin: 0}}>{message}</Paragraph>
-          {action}
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
         </Alert>
       </Snackbar>
     </>
