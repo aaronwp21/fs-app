@@ -25,7 +25,7 @@ function Layout({ children }) {
         <Header />
       </header>
       <main>
-        <Container maxWidth="md">{children}</Container>
+        <Container maxWidth="xl">{children}</Container>
       </main>
       <Snackbar
         open={open}

@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { useRouter } from 'next/router';
+
 import { Button } from '@/components/mui';
 
 import Layout from '@/components/Layout';
@@ -9,6 +11,14 @@ import ProductForm from '@/components/forms/ProductForm';
 import { useAdd } from '@/lib/tq/products/mutations';
 
 export default function AddProduct() {
+  const router = useRouter();
+  const addMutation = useAdd();
+
+  const submitHandler = (data) => {
+    addMutation.mutate(data);
+    router.push('/admin/products/');
+  }
+
   return (
     <>
       <Head>

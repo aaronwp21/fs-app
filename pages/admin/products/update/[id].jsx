@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { useRouter } from 'next/router';
+
 import { Button } from '@/components/mui';
 
 import Layout from '@/components/Layout';
@@ -11,6 +13,13 @@ import { useUpdate } from '@/lib/tq/products/mutations';
 import { fetchProduct } from '@/lib/api-functions/server/products/queries';
 
 export default function UpdateProduct({ ssd }) {
+  const router = useRouter();
+  const updateMutation = useUpdate();
+
+  const submitHandler = (data) => {
+    addMutation.mutate(data);
+    router.push('/admin/products/');
+  }
   return (
     <>
       <Head>

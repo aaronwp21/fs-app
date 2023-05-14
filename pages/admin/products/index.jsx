@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { fetchProducts } from '@/lib/api-functions/server/products/queries';
 import { STORAGE_KEY } from '@/lib/tq/products/settings';
+import { useDelete } from '@/lib/tq/products/mutations';
 
 import { Button } from '@/components/mui';
 
@@ -13,6 +14,12 @@ import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
 
 export default function AdminProductList() {
+  const removeMutation = useDelete();
+
+  const removeHandler = (id) => {
+    removeMutation.mutate(id);
+  }
+
   return (
     <>
       <Head>
