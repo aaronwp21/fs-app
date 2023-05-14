@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import Head from 'next/head';
 // import Image from 'next/image'
 
@@ -8,14 +9,22 @@ import { STORAGE_KEY } from '@/lib/tq/products/settings';
 import { log } from '@/lib/utils/formatters';
 
 import { Inter } from 'next/font/google';
+
+import { Button } from '@/components/mui';
+
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
 
+import { UIContext } from '@/components/contexts/UI.context';
+
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const {
+    showMessage
+  } = useContext(UIContext);
   return (
     <>
       <Head>
