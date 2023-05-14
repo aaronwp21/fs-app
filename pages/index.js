@@ -18,9 +18,7 @@ import ProductList from '@/components/ProductList';
 import { UIContext } from '@/components/contexts/UI.context';
 
 export default function Home() {
-  const {
-    showMessage
-  } = useContext(UIContext);
+  const { showMessage } = useContext(UIContext);
   return (
     <>
       <Head>

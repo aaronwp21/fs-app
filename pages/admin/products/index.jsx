@@ -18,7 +18,7 @@ export default function AdminProductList() {
 
   const removeHandler = (id) => {
     removeMutation.mutate(id);
-  }
+  };
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function AdminProductList() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Products</Heading>
+        <Heading component="h2">Admin List Products</Heading>
         <Button
           variant="contained"
           component={Link}
