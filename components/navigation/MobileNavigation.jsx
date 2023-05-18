@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import {
   Typography,
   Drawer,
@@ -17,6 +18,7 @@ function MobileNavigation({
     console.log('no handleDrawerToggle function provided'),
   drawerWidth = 240,
 }) {
+  const { user } = useUser();
   const itemLinkStyles = {
     display: 'block',
     textDecoration: 'none',
@@ -63,6 +65,36 @@ function MobileNavigation({
                 </ListItemButton>
               </Link>
             </ListItem>
+            {user ? (
+              <>
+                <ListItem>
+                  <Link href={'/profile'} passHref style={itemLinkStyles}>
+                    <ListItemButton sx={{ textAlign: 'left' }}>
+                      <ListItemText primary={'Profile'} />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href={'/api/auth/logout'}
+                    passHref
+                    style={itemLinkStyles}
+                  >
+                    <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
+                      <ListItemText primary={'Log Out'} />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              </>
+            ) : (
+              <ListItem>
+                <Link href={'/api/auth/login'} passHref style={itemLinkStyles}>
+                  <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
+                    <ListItemText primary={'Log In'} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            )}
           </List>
         </Box>
       </Drawer>

@@ -22,6 +22,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Avatar from '@mui/material/Avatar';
 
 export {
   Button,
@@ -48,4 +49,5 @@ export {
   CloseIcon,
   Snackbar,
   Alert,
+  Avatar,
 };

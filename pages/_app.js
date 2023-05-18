@@ -5,6 +5,7 @@ import {
   Hydrate,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import '@/styles/globals.css';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,16 +34,18 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          {/* <ReactQueryDevtools /> */}
-          <Hydrate state={pageProps.dehydratedState}>
-            <UIProvider>
-              <Component {...pageProps} />
-            </UIProvider>
-          </Hydrate>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            {/* <ReactQueryDevtools /> */}
+            <Hydrate state={pageProps.dehydratedState}>
+              <UIProvider>
+                <Component {...pageProps} />
+              </UIProvider>
+            </Hydrate>
+          </QueryClientProvider>
+        </ThemeProvider>
+      </UserProvider>
     </>
   );
 }
