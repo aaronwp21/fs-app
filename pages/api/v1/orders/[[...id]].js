@@ -1,4 +1,4 @@
-import nc from "next-connect";
+import nc from "next-connect-v0";
 import {
   getSession,
 } from "@auth0/nextjs-auth0";

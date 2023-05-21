@@ -14,7 +14,7 @@ import {
   addProduct
 } from '@/lib/api-functions/server/products/controllers'
 
-import permissions from '@/lib/api-functions/server/permission.js';
+import permissions from '@/lib/api-functions/server/permissions';
 
 const {
   identifier,
