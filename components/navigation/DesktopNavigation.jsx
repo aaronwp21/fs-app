@@ -11,6 +11,7 @@ import {
 } from '@/components/mui';
 import { useTheme } from '@mui/material/styles';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import ShoppingCartDisplay from '../BasketDisplay';
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
@@ -46,6 +47,7 @@ function DesktopNavigation({
             Design Shop
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {user && <ShoppingCartDisplay user={user} />}
             <Button
               sx={{ color: lightTextColor }}
               component={Link}

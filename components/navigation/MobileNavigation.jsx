@@ -11,6 +11,7 @@ import {
   ListItemText,
   Box,
 } from '@/components/mui';
+import ShoppingCartDisplay from '../BasketDisplay';
 
 function MobileNavigation({
   mobileOpen = false,
@@ -40,7 +41,7 @@ function MobileNavigation({
       >
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
           <Typography variant="h6" sx={{ my: 2 }}>
-            Design Shop
+            Design Shop {user && <ShoppingCartDisplay user={user} />}
           </Typography>
           <Divider />
           <List>
