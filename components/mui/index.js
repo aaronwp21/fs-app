@@ -23,6 +23,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export {
   Button,
@@ -50,4 +51,5 @@ export {
   Snackbar,
   Alert,
   Avatar,
+  DeleteIcon,
 };
