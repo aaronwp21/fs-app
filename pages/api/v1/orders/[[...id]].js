@@ -1,15 +1,13 @@
-import nc from "next-connect-v0";
-import {
-  getSession,
-} from "@auth0/nextjs-auth0";
+import nc from 'next-connect-v0';
+import { getSession } from '@auth0/nextjs-auth0';
 
 import {
   handleUnauthorisedAPICall,
   checkPermissions,
   checkRole,
-} from "@/lib/api-functions/server/utils";
+} from '@/lib/api-functions/server/utils';
 
-import permissions from "@/lib/api-functions/server/permissions.js";
+import permissions from '@/lib/api-functions/server/permissions.js';
 
 const {
   identifier,
@@ -29,42 +27,42 @@ import {
   removeOrder,
   getOrders,
   addOrder,
-} from "@/lib/api-functions/server/orders/controllers";
+} from '@/lib/api-functions/server/orders/controllers';
 
-const baseRoute = "/api/v1/orders/:owner?";
+const baseRoute = '/api/v1/orders/:owner?';
 
 const handler = nc({
   onError: (err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).end("Internal Server Error");
+    res.status(500).end('Internal Server Error');
   },
   onNoMatch: (req, res) => {
-    res.status(404).end("Not Found");
+    res.status(404).end('Not Found');
   },
   attachParams: true,
 })
-.use(async (req, res, next) => {
-  if (req.method === "GET") {
-    return next();
-  }
-  try {
-    const session = await getSession(req, res);
-    req.user = session.user;
-    console.log(session);
-    console.log(req.user);
-    next();
-  } catch (err) {
-    return handleUnauthorisedAPICall(res);
-  }
-})
+  .use(async (req, res, next) => {
+    if (req.method === 'GET') {
+      return next();
+    }
+    try {
+      const session = await getSession(req, res);
+      req.user = session.user;
+      console.log(session);
+      console.log(req.user);
+      next();
+    } catch (err) {
+      return handleUnauthorisedAPICall(res);
+    }
+  })
   .get(baseRoute, async (req, res) => {
-    const {owner} = req.params;
-    if(owner === 'own') {
+    const { owner } = req.params;
+    if (owner === 'own') {
       return getOwnBasket(req, res);
     }
     const isAdmin = checkRole(req.user, identifier, admin);
 
-    if(!owner && !isAdmin) {
+    if (!owner && !isAdmin) {
       return handleUnauthorisedAPICall(res);
     }
     getOrders(req, res);

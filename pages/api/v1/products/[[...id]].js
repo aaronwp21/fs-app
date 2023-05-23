@@ -4,34 +4,13 @@ import { getSession } from '@auth0/nextjs-auth0';
 import {
   handleUnauthorisedAPICall,
   checkPermissions,
-  checkRole,
 } from '@/lib/api-functions/server/utils';
 
-import {
-  updateProduct,
-  removeProduct,
-  getProducts,
-  addProduct
-} from '@/lib/api-functions/server/products/controllers'
-
-import permissions from '@/lib/api-functions/server/permissions';
+import permissions from '@/lib/api-functions/server/permissions.js';
 
 const {
   identifier,
-  // roles: { admin },
   permissions: {
-    // basket: {
-    //   create: createBasket,
-    //   read: readBasket,
-    //   update: updateBasket,
-    //   remove: removeBasket,
-    // },
-    // orders: {
-    //   create: createOrders,
-    //   read: readOrders,
-    //   update: updateOrders,
-    //   remove: removeOrders,
-    // },
     products: {
       create: createProducts,
       read: readProducts,
@@ -41,15 +20,22 @@ const {
   },
 } = permissions;
 
+import {
+  updateProduct,
+  removeProduct,
+  getProducts,
+  addProduct,
+} from '@/lib/api-functions/server/products/controllers';
+
 const baseRoute = '/api/v1/products/:id?';
 
 const handler = nc({
   onError: (err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).end('Something broke!');
+    res.status(500).end('Internal Server Error');
   },
   onNoMatch: (req, res) => {
-    res.status(404).end('Page is not found');
+    res.status(404).end('Not Found');
   },
   attachParams: true,
 })
@@ -60,8 +46,10 @@ const handler = nc({
     try {
       const session = await getSession(req, res);
       req.user = session.user;
+      console.log(req.user);
       next();
     } catch (err) {
+      console.log('err', err);
       return handleUnauthorisedAPICall(res);
     }
   })
@@ -69,20 +57,20 @@ const handler = nc({
     getProducts(req, res);
   })
   .post(baseRoute, async (req, res) => {
-    if(!checkPermissions(req.user, identifier, createProducts)) {
-      return handleUnauthorisedAPICall(res)
+    if (!checkPermissions(req.user, identifier, createProducts)) {
+      return handleUnauthorisedAPICall(res);
     }
     addProduct(req, res);
   })
   .put(baseRoute, async (req, res) => {
-    if(!checkPermissions(req.user, identifier, updateProducts)) {
-      return handleUnauthorisedAPICall(res)
+    if (!checkPermissions(req.user, identifier, updateProducts)) {
+      return handleUnauthorisedAPICall(res);
     }
     updateProduct(req, res);
   })
   .delete(baseRoute, async (req, res) => {
-    if(!checkPermissions(req.user, identifier, removeProducts)) {
-      return handleUnauthorisedAPICall(res)
+    if (!checkPermissions(req.user, identifier, removeProducts)) {
+      return handleUnauthorisedAPICall(res);
     }
     removeProduct(req, res);
   });

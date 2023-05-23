@@ -1,23 +1,21 @@
-// import {useContext} from 'react'
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { fetchProducts } from "@/lib/api-functions/server/products/queries";
-import { STORAGE_KEY } from "@/lib/tq/products/settings";
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { fetchProducts } from '@/lib/api-functions/server/products/queries';
+import { STORAGE_KEY } from '@/lib/tq/products/settings';
 
-import { checkPermissions } from "@/lib/api-functions/server/utils";
-import settings from "@/lib/api-functions/server/permissions";
+import { checkPermissions } from '@/lib/api-functions/server/utils';
+import settings from '@/lib/api-functions/server/permissions';
 
-import Layout from "@/components/Layout";
-import Heading from "@/components/Heading";
-import QueryBoundaries from "@/components/QueryBoundaries";
-import ProductList from "@/components/ProductList";
-import { Button } from "@/components/mui";
-import { useDelete } from "@/lib/tq/products/mutations";
-// import { UIContext } from '@/components/contexts/UI.context';
+import Layout from '@/components/Layout';
+import Heading from '@/components/Heading';
+import QueryBoundaries from '@/components/QueryBoundaries';
+import ProductList from '@/components/ProductList';
+import { Button } from '@/components/mui';
+import { useDelete } from '@/lib/tq/products/mutations';
 
 export default function AdminProductList({ user }) {
   const removeMutation = useDelete();
@@ -25,19 +23,19 @@ export default function AdminProductList({ user }) {
   const canAdd = checkPermissions(
     user,
     settings.identifier,
-    settings.permissions.products.create
+    settings.permissions.products.create,
   );
 
   const canUpdate = checkPermissions(
     user,
     settings.identifier,
-    settings.permissions.products.update
+    settings.permissions.products.update,
   );
 
   const canRemove = checkPermissions(
     user,
     settings.identifier,
-    settings.permissions.products.remove
+    settings.permissions.products.remove,
   );
 
   const removeHandler = (id) => {
@@ -84,7 +82,7 @@ export const getServerSideProps = withPageAuthRequired({
     const queryClient = new QueryClient();
     await queryClient.setQueryData(
       [STORAGE_KEY],
-      JSON.parse(JSON.stringify(products))
+      JSON.parse(JSON.stringify(products)),
     );
 
     return {

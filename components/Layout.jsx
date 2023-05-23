@@ -33,7 +33,7 @@ function Layout({ children }) {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-          <Paragraph sx={{margin: 0}}>{message}</Paragraph>
+          <Paragraph sx={{ margin: '0px' }}>{message}</Paragraph>
           <IconButton
             size="small"
             aria-label="close"

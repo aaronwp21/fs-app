@@ -56,7 +56,6 @@ const handler = async (req, res) => {
       currency: 'GBP',
       customer: customer.id,
     });
-    console.log(charge);
   } catch (err) {
     console.log('err doing stripe', err);
     return res.status(500).json({
@@ -109,7 +108,6 @@ const handler = async (req, res) => {
 
   try {
     sgMail.send(msg);
-    console.log('confirmation email sent!');
     return res.status(200).json({
       message: 'Purchase successfull!',
       receiptURL: charge.receipt_url,

@@ -11,7 +11,8 @@ import {
 } from '@/components/mui';
 import { useTheme } from '@mui/material/styles';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import ShoppingCartDisplay from '../BasketDisplay';
+
+import ShoppingCartDisplay from '@/components/BasketDisplay';
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
@@ -72,18 +73,18 @@ function DesktopNavigation({
                   Profile
                 </Button>
                 <Button
-                  sx={{ color: lightTextColor }}
-                  component={Link}
                   href="/api/auth/logout"
+                  component={Link}
+                  sx={{ color: lightTextColor }}
                 >
                   Log Out
                 </Button>
               </>
             ) : (
               <Button
-                sx={{ color: lightTextColor }}
-                component={Link}
                 href="/api/auth/login"
+                component={Link}
+                sx={{ color: lightTextColor }}
               >
                 Log In
               </Button>
