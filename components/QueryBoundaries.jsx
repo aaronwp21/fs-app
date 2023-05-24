@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
-import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Alert, Button, CircularProgress } from '@/components/mui';
-import Paragraph from '@/components/Paragraph';
+import { Suspense } from "react";
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
+import { ErrorBoundary } from "react-error-boundary";
+import { Alert, Button, CircularProgress } from "@/components/mui";
+import Paragraph from "@/components/Paragraph";
 
 export const LoadingView = () => <CircularProgress />;
 

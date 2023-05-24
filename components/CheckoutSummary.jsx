@@ -18,6 +18,7 @@ import { formatPrice } from '@/lib/utils/formatters';
 const BasketList = () => {
   const { data: basket } = useUserBasket();
   const basketTotal = basket.items.reduce((total, item) => {
+    console.log(total, item);
     return add(total, dinero({ amount: item.price, currency: GBP }));
   }, dinero({ amount: 0, currency: GBP }));
 

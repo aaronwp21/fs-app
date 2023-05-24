@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
 import { useUser } from '@auth0/nextjs-auth0/client';
-
 import {
   Typography,
   Drawer,
@@ -13,7 +11,7 @@ import {
   ListItemText,
   Box,
 } from '@/components/mui';
-import ShoppingCartDisplay from '@/components/BasketDisplay';
+import ShoppingCartDisplay from '../BasketDisplay';
 
 function MobileNavigation({
   mobileOpen = false,
@@ -91,12 +89,8 @@ function MobileNavigation({
               </>
             ) : (
               <ListItem>
-                <Link
-                  href={'/api/auth/login'}
-                  passHref
-                  style={{ textDecoration: 'none' }}
-                >
-                  <ListItemButton sx={{ textAlign: 'left' }}>
+                <Link href={'/api/auth/login'} passHref style={itemLinkStyles}>
+                  <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
                     <ListItemText primary={'Log In'} />
                   </ListItemButton>
                 </Link>

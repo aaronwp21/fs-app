@@ -1,19 +1,25 @@
-import Head from 'next/head';
+// import {useContext} from 'react'
+import Head from "next/head";
+import Link from "next/link";
 
-import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { getUserBasketQuery } from '@/lib/api-functions/server/baskets/queries';
-import { useRemoveFromBasket } from '@/lib/tq/baskets/mutations';
-import { USER_BASKET_STORAGE_KEY } from '@/lib/tq/baskets/settings';
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { getUserBasketQuery } from "@/lib/api-functions/server/baskets/queries";
+import { useRemoveFromBasket } from "@/lib/tq/baskets/mutations";
+import { USER_BASKET_STORAGE_KEY } from "@/lib/tq/baskets/settings";
 
-import Layout from '@/components/Layout';
-import Heading from '@/components/Heading';
-import QueryBoundaries from '@/components/QueryBoundaries';
-import BasketList from '@/components/BasketList';
-import BasketTotal from '@/components/BasketTotal';
+import { log } from "@/lib/utils/formatters";
 
-export default function BasketPage() {
+import Layout from "@/components/Layout";
+import Heading from "@/components/Heading";
+import QueryBoundaries from "@/components/QueryBoundaries";
+import BasketList from "@/components/BasketList";
+import BasketTotal from "@/components/BasketTotal";
+import { Button } from "@/components/mui";
+import Paragraph from "@/components/Paragraph";
+
+export default function BasketPage({ basket }) {
   const mutation = useRemoveFromBasket();
   const deleteHandler = (id) => mutation.mutate(id);
   return (
@@ -48,7 +54,7 @@ export const getServerSideProps = withPageAuthRequired({
 
     await queryClient.setQueryData(
       [USER_BASKET_STORAGE_KEY],
-      JSON.parse(JSON.stringify(basket)),
+      JSON.parse(JSON.stringify(basket))
     );
 
     return {

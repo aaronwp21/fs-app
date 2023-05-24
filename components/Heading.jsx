@@ -1,6 +1,6 @@
-import { Typography } from '@/components/mui';
+import { Typography } from "@/components/mui";
 
-const Heading = ({ component = 'h1', variant, children, ...props }) => {
+const Heading = ({ component = "h1", variant, children, ...props }) => {
   return (
     <Typography component={component} variant={variant || component} {...props}>
       {children}

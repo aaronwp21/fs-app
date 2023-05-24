@@ -90,7 +90,7 @@ export default function ProductForm({ submitHandler, product }) {
               rows={4}
               fullWidth
               error={!!errors.description}
-              helperText={errors.description?.message}
+              helperText={errors.description?.description}
             />
           )}
         />

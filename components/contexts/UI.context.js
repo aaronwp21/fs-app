@@ -43,3 +43,12 @@ export const UIProvider = ({ children }) => {
   );
 };
 
+/*
+<Snackbar
+  open={open}
+  autoHideDuration={6000}
+  onClose={handleClose}
+  message="Note archived"
+  action={action}
+/>
+*/

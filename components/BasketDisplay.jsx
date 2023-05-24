@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Badge, IconButton, ShoppingCartIcon } from "@/components/mui";
 import { styled } from "@mui/material/styles";

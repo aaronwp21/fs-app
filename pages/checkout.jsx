@@ -1,3 +1,4 @@
+// import {useContext} from 'react'
 import Head from 'next/head';
 
 import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
@@ -14,8 +15,9 @@ import QueryBoundaries from '@/components/QueryBoundaries';
 import CheckoutSummary from '@/components/CheckoutSummary';
 import StripeButton from '@/components/StripeButton';
 
-export default function BasketPage() {
+export default function BasketPage({ basket }) {
   const mutation = useRemoveFromBasket();
+  const deleteHandler = (id) => mutation.mutate(id);
   return (
     <>
       <Head>
