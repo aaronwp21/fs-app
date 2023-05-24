@@ -21,7 +21,6 @@ export default function ProfilePage({ ssd, sess }) {
         <QueryBoundaries>
           <UserDisplay user={ssd} />
         </QueryBoundaries>
-        <pre>{JSON.stringify(sess, null, 2)}</pre>
       </Layout>
     </>
   );
