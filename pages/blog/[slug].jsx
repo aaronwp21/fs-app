@@ -53,7 +53,6 @@ export const getStaticPaths = async () => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res.data.blogPosts);
       return res.data.blogPosts;
     })
     .catch((err) => console.log(err));

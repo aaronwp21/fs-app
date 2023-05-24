@@ -10,16 +10,11 @@ const StripeButton = () => {
   const { user, isLoading, error } = useUser();
   const { data: basket } = useUserBasket();
   if (isLoading) return null;
-  console.log(user?.email, isLoading, error);
 
   const basketTotal = basket.items.reduce((total, item) => {
-    console.log(total, item);
     return total + item.price;
   }, 0);
-  console.log(basket);
-  console.log(basketTotal);
   const onToken = async (token) => {
-    console.log('token', token);
     const {
       email,
       card: { name },
@@ -32,7 +27,6 @@ const StripeButton = () => {
         token: tk,
         amount: basketTotal,
       });
-      console.log(result);
       Router.push({
         pathname: '/thank-you',
         query: {

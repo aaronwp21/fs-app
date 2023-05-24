@@ -14,7 +14,6 @@ import Heading from "@/components/Heading";
 import { AllPosts } from "@/lib/hygraph/queries";
 
 export default function Blog({ ssd = [] }) {
-  console.log("ssd", ssd);
   return (
     <>
       <Head>
@@ -59,9 +58,7 @@ export const getStaticProps = async () => {
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
-  console.log(allPosts);
   const posts = allPosts.data.blogPosts;
-  console.log(posts);
   return {
     props: {
       ssd: posts,

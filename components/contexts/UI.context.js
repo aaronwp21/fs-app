@@ -22,7 +22,6 @@ export const UIProvider = ({ children }) => {
   };
 
   const showMessage = ({ type, string }) => {
-    console.log(type, string);
     setOpen(true);
     setMessage(string);
     setSeverity(type);

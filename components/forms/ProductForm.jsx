@@ -31,10 +31,6 @@ export default function ProductForm({ submitHandler, product }) {
     defaultValues: product || defaults,
   });
 
-  useEffect(() => {
-    console.log(formState);
-  });
-
   const formRowStyle = {
     marginBlockEnd: '1em',
   };

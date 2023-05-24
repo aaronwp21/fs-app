@@ -55,7 +55,6 @@ const UserDisplay = ({ user }) => {
         </CardContent>
       </Card>
       <hr />
-      <pre>{JSON.stringify(user, null, 2)}</pre>
     </>
   );
 };

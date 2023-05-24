@@ -49,8 +49,6 @@ const handler = async (req, res) => {
       source: token,
       email,
     });
-    console.log('customer', customer);
-    console.log('amount', amount);
     charge = await stripe.charges.create({
       amount,
       currency: 'GBP',

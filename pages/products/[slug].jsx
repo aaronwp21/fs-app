@@ -26,23 +26,16 @@ export default function SingleProduct({ ssd = {} }) {
 
 export const getStaticPaths = async () => {
   const products = await fetchProducts().catch((err) => console.log(err));
-  console.log('products', products);
   const paths = products.map((product) => ({
     params: {
       slug: slugify(product.title, product._id),
     },
   }));
-  console.log(
-    'paths',
-    inspect(paths, { showHidden: true, depth: null, colors: true }),
-  );
   return { paths, fallback: 'blocking' };
 };
 
 export async function getStaticProps({ params: { slug } }) {
-  console.log('slug', slug);
   const id = slug.split('-').at(-1);
   const product = await fetchProduct(id).catch((err) => console.log(err));
-  console.log('product', product);
   return { props: { ssd: JSON.parse(JSON.stringify(product)) } };
 }

@@ -38,6 +38,5 @@ export async function getServerSideProps({ params }) {
   const product = await fetchProduct(params.id).catch((err) =>
     console.log(err),
   );
-  console.log('product', product);
   return { props: { ssd: JSON.parse(JSON.stringify(product)) } };
 }

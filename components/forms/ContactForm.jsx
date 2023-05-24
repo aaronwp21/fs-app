@@ -32,10 +32,6 @@ export default function ContactForm({ submitHandler }) {
     defaultValues: defaults,
   });
 
-  useEffect(() => {
-    console.log(formState);
-  });
-
   const formRowStyle = {
     marginBlockEnd: '1em',
   };

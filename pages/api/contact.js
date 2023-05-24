@@ -20,8 +20,6 @@ const handler = async (req, res) => {
     text: message,
     html: `<p>${message}</p>`
   };
-  console.log(req.body);
-  console.log(msg);
 
   try {
     await sgMail.send(msg);
