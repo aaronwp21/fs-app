@@ -1,4 +1,3 @@
-// import {useContext} from 'react'
 import Head from "next/head";
 import Link from "next/link";
 
@@ -17,7 +16,6 @@ import QueryBoundaries from "@/components/QueryBoundaries";
 import ProductList from "@/components/ProductList";
 import { Button } from "@/components/mui";
 import { useDelete } from "@/lib/tq/products/mutations";
-// import { UIContext } from '@/components/contexts/UI.context';
 
 export default function AdminProductList({ user }) {
   const removeMutation = useDelete();

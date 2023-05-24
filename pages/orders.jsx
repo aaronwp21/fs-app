@@ -1,6 +1,4 @@
-// import {useContext} from 'react'
 import Head from "next/head";
-import Link from "next/link";
 
 import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 
@@ -8,15 +6,11 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getUserOrdersQuery } from "@/lib/api-functions/server/orders/queries";
 import { USER_ORDERS_STORAGE_KEY } from "@/lib/tq/orders/settings";
 
-import { log } from "@/lib/utils/formatters";
-
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
 import QueryBoundaries from "@/components/QueryBoundaries";
 import BasketList from "@/components/BasketList";
 import BasketTotal from "@/components/BasketTotal";
-import { Button } from "@/components/mui";
-import Paragraph from "@/components/Paragraph";
 
 export default function OrdersPage() {
   return (

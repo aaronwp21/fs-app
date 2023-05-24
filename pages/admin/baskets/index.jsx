@@ -1,4 +1,3 @@
-// import {useContext} from 'react'
 import Head from "next/head";
 import Link from "next/link";
 
@@ -14,13 +13,11 @@ import QueryBoundaries from "@/components/QueryBoundaries";
 import OrderList from "@/components/OrderList";
 import { Button } from "@/components/mui";
 import { useDelete } from "@/lib/tq/orders/mutations";
-// import { UIContext } from '@/components/contexts/UI.context';
 
 export default function AdminBasketList() {
   const removeMutation = useDelete();
 
   const removeHandler = (id) => {
-    // console.log('in handler', args);
     removeMutation.mutate(id);
   };
   return (
@@ -40,15 +37,11 @@ export default function AdminBasketList() {
 
 export async function getStaticProps() {
   const orders = await getOrdersQuery().catch((err) => console.log(err));
-  // console.log("GSP Orders", orders);
-  // console.log("j", JSON.parse(JSON.stringify(orders)));
   const queryClient = new QueryClient();
-  // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
   await queryClient.setQueryData(
     [STORAGE_KEY],
     JSON.parse(JSON.stringify(orders))
   );
-  // log("dhy", dehydrate(queryClient));
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

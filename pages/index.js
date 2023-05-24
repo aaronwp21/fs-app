@@ -1,14 +1,9 @@
 import { useContext } from 'react';
 import Head from 'next/head';
-// import Image from 'next/image'
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { fetchProducts } from '@/lib/api-functions/server/products/queries';
 import { STORAGE_KEY } from '@/lib/tq/products/settings';
-
-import { log } from '@/lib/utils/formatters';
-
-import { Inter } from 'next/font/google';
 
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
@@ -18,7 +13,6 @@ import ProductList from '@/components/ProductList';
 import { UIContext } from '@/components/contexts/UI.context';
 
 export default function Home() {
-  const { showMessage } = useContext(UIContext);
   return (
     <>
       <Head>

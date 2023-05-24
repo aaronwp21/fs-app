@@ -18,20 +18,7 @@ import permissions from '@/lib/api-functions/server/permissions';
 
 const {
   identifier,
-  // roles: { admin },
   permissions: {
-    // basket: {
-    //   create: createBasket,
-    //   read: readBasket,
-    //   update: updateBasket,
-    //   remove: removeBasket,
-    // },
-    // orders: {
-    //   create: createOrders,
-    //   read: readOrders,
-    //   update: updateOrders,
-    //   remove: removeOrders,
-    // },
     products: {
       create: createProducts,
       read: readProducts,

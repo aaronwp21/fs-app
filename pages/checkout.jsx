@@ -1,4 +1,3 @@
-// import {useContext} from 'react'
 import Head from 'next/head';
 
 import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';

@@ -36,7 +36,6 @@ import TableFooter from "@mui/material/TableFooter";
 import TextField from "@mui/material/TextField";
 
 export {
-  // Icons
   MenuIcon,
   EditIcon,
   DeleteIcon,
