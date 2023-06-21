@@ -44,7 +44,7 @@ function DesktopNavigation({
               color: lightTextColor,
             }}
           >
-            Design Shop
+            Food Site
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {user && <ShoppingCartDisplay user={user} />}
