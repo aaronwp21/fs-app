@@ -22,7 +22,9 @@ const ProductList = ({
       component="ol"
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px,1fr))",
+        width: '75%',
+        margin: 'auto'
       }}
     >
       {products.map((product) => (

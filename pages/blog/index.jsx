@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Button,
   List,
@@ -11,10 +11,10 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-} from "@/components/mui";
-import Layout from "@/components/Layout";
-import Heading from "@/components/Heading";
-import { AllPosts } from "@/lib/hygraph/queries";
+} from '@/components/mui';
+import Layout from '@/components/Layout';
+import Heading from '@/components/Heading';
+import { AllPosts } from '@/lib/hygraph/queries';
 
 export default function Blog({ ssd = [] }) {
   return (
@@ -26,12 +26,23 @@ export default function Blog({ ssd = [] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Blog List</Heading>
-        <List component={"ol"} sx={{ listStyle: "none" }}>
+        <Heading component="h2" sx={{marginBlockEnd: '2rem'}}>Blog List</Heading>
+        <List
+          component={'ol'}
+          sx={{
+            listStyle: 'none',
+            maxWidth: '1399px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px,1fr))',
+            justifyContent: 'center',
+            width: '100%',
+            margin: 'auto',
+          }}
+        >
           {ssd.map(({ id, title, slug, heroImage: { url } }) => (
             <ListItem key={id}>
-              <Card component={"article"} sx={{ width: "100%" }}>
-                <CardMedia sx={{ display: "grid", placeContent: "center" }}>
+              <Card component={'article'} sx={{ width: '100%', height:'100%' }}>
+                <CardMedia sx={{ display: 'grid', placeContent: 'center' }}>
                   <Image alt={title} src={url} width="200" height="200" />
                 </CardMedia>
                 <CardContent>
@@ -51,9 +62,9 @@ export default function Blog({ ssd = [] }) {
 
 export const getStaticProps = async () => {
   const allPosts = await fetch(process.env.HYGRAPH_ENDPOINT, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": `application/json; charset="UTF-8`,
+      'Content-Type': `application/json; charset="UTF-8`,
       Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
     },
     body: JSON.stringify({
